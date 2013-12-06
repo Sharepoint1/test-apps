@@ -23,8 +23,8 @@
 #include <linux/videodev2.h>
 
 #define CLEAR(x) memset(&(x), '\0', sizeof(x))
-#define VIDEO_BUF_NBR 4	
-#define CAPTURE_BUF_NBR 8
+#define VIDEO_BUF_NBR 4
+#define CAPTURE_BUF_NBR 2
 
 struct buffer
 {
@@ -441,12 +441,12 @@ static void mainloop(void)
 	if(count) {
 		while (count) {
 			if(read_frame() == 1) count--;
-			usleep(20000);
+			usleep(30000);
 		}
 	} else {
 		while(1) {
 			read_frame();
-			usleep(20000);
+			usleep(30000);
 		}
 	}	
 }
